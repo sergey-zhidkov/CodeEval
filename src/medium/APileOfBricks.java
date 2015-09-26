@@ -4,6 +4,9 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 public class APileOfBricks {
     public static void main (String[] args) throws IOException {
@@ -22,15 +25,23 @@ public class APileOfBricks {
         Hole hole = new Hole(holeAndBricks[0]);
         String [] bricks = holeAndBricks[1].split(";");
 
-        StringBuilder result = new StringBuilder();
-        String prefix = "";
+        List<Integer> indexes = new ArrayList<Integer>();
+
+
         for (String brickString : bricks) {
             Brick brick = new Brick(brickString);
             if (hole.isBrickCanPassThrough(brick)) {
-                result.append(prefix);
-                prefix = ",";
-                result.append(brick.index);
+                indexes.add(brick.index);
             }
+        }
+
+        Collections.sort(indexes);
+        StringBuilder result = new StringBuilder();
+        String prefix = "";
+        for (Integer index : indexes) {
+            result.append(prefix);
+            prefix = ",";
+            result.append(index);
         }
 
         if (result.length() == 0) {

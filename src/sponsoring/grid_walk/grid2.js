@@ -1,11 +1,11 @@
 (function() {
 
-    const HEIGHT = 1000;
-    const WIDTH = 1000;
-    const PIXELS_IN_CELL = 5;
+    const HEIGHT = 80;
+    const WIDTH = 80;
+    const PIXELS_IN_CELL = 36;
     const BOARD_HEIGHT = HEIGHT * PIXELS_IN_CELL;
     const BOARD_WIDTH = WIDTH * PIXELS_IN_CELL;
-    const MAX_ABS_VALUE = 19;
+    const MAX_ABS_VALUE = 11;
 
     var canvas = document.getElementById('canvas');
     var ctx = canvas.getContext("2d");
@@ -13,7 +13,8 @@
     canvas.style.width = PIXELS_IN_CELL * WIDTH + "px";
     ctx.canvas.width = PIXELS_IN_CELL * WIDTH;
     ctx.canvas.height = PIXELS_IN_CELL * HEIGHT;
-
+    ctx.strokeStyle = '#333333';
+    ctx.lineWidth = 1;
 
     createCells();
 
@@ -37,13 +38,13 @@
 //        var p3 = b.create('point', [bX + PIXELS_IN_CELL, bY + PIXELS_IN_CELL], {fixed: true, visible: false}); // right-top
 //        var p4 = b.create('point', [bX, bY + PIXELS_IN_CELL], {fixed: true, visible: false}); // left-top
 
-        var fillColor = getFillColor(x, y);
-        ctx.fillStyle = fillColor;
+        ctx.fillStyle = getFillColor(x, y);
         ctx.fillRect(bX, bY, PIXELS_IN_CELL, PIXELS_IN_CELL);
+        ctx.strokeRect(bX, bY, PIXELS_IN_CELL, PIXELS_IN_CELL);
 
-//        ctx.fillStyle = '#000000';
-//        ctx.font = "bold 12px Arial";
-//        ctx.fillText(x + ',' + y, bX, bY + PIXELS_IN_CELL / 2);
+        ctx.fillStyle = '#000000';
+        ctx.font = "bold 12px Arial";
+        ctx.fillText(x + ',' + y, bX + 2, bY + PIXELS_IN_CELL / 2);
 //        var cell = b.createElement('polygon', [p1, p2, p3, p4], {fillColor: fillColor});
 //        var text = b.create('text',[bX + 2 , bY + (PIXELS_IN_CELL / 2), '(' + x + ',' + y + ')'], {fontSize: 10});
     }

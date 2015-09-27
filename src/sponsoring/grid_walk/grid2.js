@@ -2,7 +2,7 @@
 
     const HEIGHT = 600;
     const WIDTH = 600;
-    const PIXELS_IN_CELL = 2;
+    const PIXELS_IN_CELL = 4;
     const BOARD_HEIGHT = HEIGHT * PIXELS_IN_CELL;
     const BOARD_WIDTH = WIDTH * PIXELS_IN_CELL;
     const MAX_ABS_VALUE = 19;
@@ -36,6 +36,7 @@
             fillRow(nextCoord, surface, stack);
         }
         drawOnGrid(surface);
+        calcAndShowResult(surface);
     }
 
     function fillRow(coord, surface, stack) {
@@ -103,6 +104,24 @@
             }
         }
         return surface;
+    }
+
+    function calcAndShowResult(surface) {
+        var result = 0;
+
+        for (var x = 0; x < surface.length; x++) {
+            for (var y = 0; y < HEIGHT / 2; y++) {
+                if (isFilled(surface[x][y])) {
+                    result++;
+                }
+            }
+        }
+
+        var maxLen = 298; // without 0
+        result = result - maxLen - maxLen - 1;
+        result = result * 4;
+        result = result + 4 * maxLen + 1;
+        console.log(result); // 102485 for 19
     }
 
     function fillCells() {

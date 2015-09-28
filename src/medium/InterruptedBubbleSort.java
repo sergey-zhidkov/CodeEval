@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.Arrays;
 
 public class InterruptedBubbleSort {
     public static void main (String[] args) throws IOException {
@@ -19,9 +20,13 @@ public class InterruptedBubbleSort {
     static void doBubbleSortAndPrintResult(String line) {
         String [] splittedLine = line.split("\\|");
         long loopCount = Long.parseLong(splittedLine[1].trim());
-        long [] arrayToSort = parseArrayForSorting(splittedLine[0]);
-        bubbleSortNTimes(arrayToSort, loopCount);
+        int [] arrayToSort = parseArrayForSorting(splittedLine[0]);
 
+        if (loopCount > ((long) arrayToSort.length * (long) arrayToSort.length)) {
+            Arrays.sort(arrayToSort);
+        } else {
+            bubbleSortNTimes(arrayToSort, loopCount);
+        }
         StringBuilder result = new StringBuilder();
         String prefix = "";
         for (long value : arrayToSort) {
@@ -32,17 +37,17 @@ public class InterruptedBubbleSort {
         System.out.println(result);
     }
 
-    static void bubbleSortNTimes(long [] array, long loopCount) {
+    static void bubbleSortNTimes(int [] array, long loopCount) {
         for (int i = 0; i < loopCount; i++) {
             bubbleSortOneIteration(array);
         }
     }
 
-    static void bubbleSortOneIteration(long [] array) {
+    static void bubbleSortOneIteration(int [] array) {
         if (array.length <= 1) {
             return;
         }
-        long temp;
+        int temp;
         for (int i = 1; i < array.length; i++) {
             temp = array[i];
             array[i] = array[i - 1];
@@ -50,11 +55,11 @@ public class InterruptedBubbleSort {
         }
     }
 
-    static long [] parseArrayForSorting(String line) {
+    static int [] parseArrayForSorting(String line) {
         String [] temp = line.trim().split("\\s+");
-        long [] result = new long[temp.length];
+        int [] result = new int[temp.length];
         for (int i = 0; i < temp.length; i++) {
-            result[i] = Long.parseLong(temp[i]);
+            result[i] = Integer.parseInt(temp[i]);
         }
         return result;
     }

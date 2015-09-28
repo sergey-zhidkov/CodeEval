@@ -1,29 +1,34 @@
 (ns interrupted-bubble-sort
-    (:require [clojure.string :as str]))
+    (:require [clojure.string :as str]) (:import java.util.ArrayList))
+
+
 
 (defn parse-int [s]
       (Integer. (re-find  #"\d+" s )))
 
 (defn swap [v i1 i2]
-   (assoc v i2 (v i1) i1 (v i2)))
+  (def temp (.get v i1))
+  (.set v i1 (.get v i2))
+  (.set v i2 temp)
+  v)
 
 (defn smaller? [vec index1 index2]
       ;(println "smaller" (get vec index1) (get vec index2))
-  (< (get vec index2) (get vec index1)))
+  (< (.get vec index2) (.get vec index1)))
 
 
 (defn bubble-sort-one-iteration [arr]
-      (def len (count arr))
+      (def len (.size arr))
       ;(println "do sort for arr: " arr " with len: " len)
       (if (< len 2)
         arr
-        (loop [i 1 new-arr arr]
+        (loop [i 1]
           (if (= i len)
-            new-arr
+            arr
             (do
-              (recur (+ i 1) (if (smaller? new-arr (- i 1) i)
-                              (swap new-arr (- i 1) i)
-                              new-arr))))
+              (if (smaller? arr (- i 1) i)
+                (swap arr (- i 1) i))
+              (recur (+ i 1) )))
           ))
   )
 
@@ -50,7 +55,7 @@
       (def arr (mapv read-string (str/split (str/trim (get vector-to-parse 0)) #" ")))
       (def loop-count (read-string (get vector-to-parse 1)))
 
-      (def result-arr (bubble-sort arr loop-count))
+      (def result-arr (bubble-sort (ArrayList. arr) loop-count))
 
       (print-result result-arr))
 

@@ -38,7 +38,7 @@ public class InterruptedBubbleSort {
     }
 
     static void bubbleSortNTimes(int [] array, long loopCount) {
-        for (int i = 0; i < loopCount; i++) {
+        for (long i = 1; i <= loopCount; i++) {
             bubbleSortOneIteration(array);
         }
     }
@@ -50,8 +50,10 @@ public class InterruptedBubbleSort {
         int temp;
         for (int i = 1; i < array.length; i++) {
             temp = array[i];
-            array[i] = array[i - 1];
-            array[i - 1] = temp;
+            if (array[i - 1] > temp) {
+                array[i] = array[i - 1];
+                array[i - 1] = temp;
+            }
         }
     }
 

@@ -1,5 +1,5 @@
 (ns interrupted-bubble-sort
-    (:require [clojure.string :as str]) (:import java.util.ArrayList))
+    (:require [clojure.string :as str]))
 
 
 
@@ -33,11 +33,15 @@
   )
 
 (defn bubble-sort [arr loop-count]
-      (loop [i loop-count arr-to-change arr]
+      (loop [i loop-count]
             (if (< i 1)
-              arr-to-change
+              arr
               (do
-                (recur (- i 1) (bubble-sort-one-iteration arr-to-change))
+                (if (> loop-count (* (.size arr) (.size arr)))
+                  (do (java.util.Collections/sort arr)
+                    arr)
+                  (do (bubble-sort-one-iteration arr) (recur (- i 1))
+                ))
               )
         )))
 
@@ -55,7 +59,7 @@
       (def arr (mapv read-string (str/split (str/trim (get vector-to-parse 0)) #" ")))
       (def loop-count (read-string (get vector-to-parse 1)))
 
-      (def result-arr (bubble-sort (ArrayList. arr) loop-count))
+      (def result-arr (bubble-sort (java.util.ArrayList. arr) loop-count))
 
       (print-result result-arr))
 

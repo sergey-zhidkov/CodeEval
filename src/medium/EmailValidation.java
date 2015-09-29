@@ -19,10 +19,8 @@ public class EmailValidation {
             // Process line of input Here
 //            validateEmail(line);
             if (pattern.matcher(line).matches()) {
-                System.out.println("true :" + line);
                 System.out.println("true");
             } else {
-                System.out.println("false :" + line);
                 System.out.println("false");
             }
         }

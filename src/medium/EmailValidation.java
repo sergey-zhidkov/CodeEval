@@ -7,8 +7,6 @@ import java.io.IOException;
 import java.util.regex.Pattern;
 
 public class EmailValidation {
-//    static String PATTERN = "^[_a-zA-Z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]+)$";
-//    static String PATTERN = "^[^@<>\\\\\"]+@[^@\\.]+(\\.[^@\\.*]+)+$";
     static String PATTERN = "^((\".*\")|([^@\\\\<>\"]+))@[^@\\.]+(\\.[^@\\.*]+)+$";
     static Pattern pattern = Pattern.compile(PATTERN);
 

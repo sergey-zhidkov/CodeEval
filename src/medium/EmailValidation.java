@@ -8,7 +8,8 @@ import java.util.regex.Pattern;
 
 public class EmailValidation {
 //    static String PATTERN = "^[_a-zA-Z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]+)$";
-    static String PATTERN = "^[^@<>]+@[^@\\.]+(\\.[^@\\.]+)+$";
+//    static String PATTERN = "^[^@<>\\\\\"]+@[^@\\.]+(\\.[^@\\.*]+)+$";
+    static String PATTERN = "^((\".*\")|([^@\\\\<>\"]+))@[^@\\.]+(\\.[^@\\.*]+)+$";
     static Pattern pattern = Pattern.compile(PATTERN);
 
     public static void main (String[] args) throws IOException {
@@ -20,8 +21,10 @@ public class EmailValidation {
             // Process line of input Here
 //            validateEmail(line);
             if (pattern.matcher(line).matches()) {
+                System.out.println("true :" + line);
                 System.out.println("true");
             } else {
+                System.out.println("false :" + line);
                 System.out.println("false");
             }
         }
@@ -45,7 +48,7 @@ public class EmailValidation {
                 && (lastDotIndex != partAfterAt.length() - 1)
                 && !isThereIsTwoDotsInRow(partAfterAt)) {
 
-            System.out.println("true");
+            System.out.println("true : " + email);
             return;
         }
         System.out.println("false" + ": " + email);

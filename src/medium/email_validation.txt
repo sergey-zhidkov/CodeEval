@@ -1,8 +1,20 @@
-@foo.com
-this is not an email id
-admin#codeeval.com
-good>123@bad.com
-g@.@.com
-@22.com
-1@2
-1@2..com
+this\ still\"not\\allowed@example.com
+a.little.lengthy.but.fine@dept.example.com
+A@b@c@example.com
+disposable.style.email.with+156@example.com
+"very.unusual.@.unusual.com"@example.com
+1@d.net
+b@d.net
+this is not true
+niceandsimple@example.com
+this is"not\allowed@example.com
+a"b(c)d,e:f;g<h>i[j\k]l@example.com
+very.common@example.com
+b@domain.net
+<invalid>@foo.com
+disposable.style.email.with+symbol@example.com
+asterisk_domain@foo.*
+Abc.example.com
+bob123@alice123.com
+hfij#kjdfvkl
+just"not"right@example.com

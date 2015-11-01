@@ -22,7 +22,7 @@ public class LuckyTickets {
         }
     }
 
-    static int countOfLuckyTickets(String line) {
+    static long countOfLuckyTickets(String line) {
         int digitsCount = Integer.parseInt(line) / 2;
 
         if (digitsCount == 1) {
@@ -34,10 +34,10 @@ public class LuckyTickets {
         return sumAllSums(map.get(digitsCount));
     }
 
-    static int sumAllSums(int [] sumCount) {
-        int result = 0;
+    static long sumAllSums(int [] sumCount) {
+        long result = 0;
         for (int sum : sumCount) {
-            result += sum * sum;
+            result += (long) sum * (long) sum;
         }
         return result;
     }

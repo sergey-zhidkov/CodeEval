@@ -1,0 +1,13 @@
+ab | bc | cd | af | ae | cx | xz | ao
+ab | bc | af | ao | bt | bw | ci
+ab | ac | ad | ae | af | bq | bx | qo | qv
+ab | bc | ad | af | ae | cx | xz | ao
+ab | bc | ae | cd | bx | bz | br | bf
+ax | xc | xr | xp | xl | xo | xi | xe | ah
+ab | bc | ad | ak | bt | bz | ch
+ab | bc | aj | am | bs | bq | ch
+ab | bc | af | ao | br | bz | ch
+ax | xc | xr | xp | xl | xo | xi | xe | ah | aq | am | xs
+ab | bc | ad | ak | br | bq | ch
+ab | ac | ad | ae | af | cq | cx | qo | qv
+ab | ac | ad | ae | af | dl | du | lo
